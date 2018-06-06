@@ -9,6 +9,7 @@ public final class RnpCalculatorFactory {
 
         rnpCalculator.registerOperation("sqrt", new SqrtOperation());
         rnpCalculator.registerOperation("clear", new ClearOperation());
+        rnpCalculator.registerOperation("-", new MinusOperation());
 
         return rnpCalculator;
     }

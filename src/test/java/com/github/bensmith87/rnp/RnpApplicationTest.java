@@ -43,6 +43,16 @@ public class RnpApplicationTest {
         assertThat(output()).isEqualTo("stack: 3.0");
     }
 
+    @Test
+    public void example3() {
+        input("5 2 -");
+        assertThat(output()).isEqualTo("stack: 3.0");
+        input("3 -");
+        assertThat(output()).isEqualTo("stack: 0.0");
+        input("clear");
+        assertThat(output()).isEqualTo("stack: ");
+    }
+
     private void input(String line) {
         rnpApplication.evaluateLine(line);
     }
