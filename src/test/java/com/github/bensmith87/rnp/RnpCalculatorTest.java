@@ -1,11 +1,20 @@
 package com.github.bensmith87.rnp;
 
+import com.github.bensmith87.rnp.operation.Operation;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Stack;
+
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
 
 public class RnpCalculatorTest {
+
+    private static final String OPERATION_NAME = "op";
 
     private RnpCalculator rnpCalculator;
 
@@ -24,26 +33,15 @@ public class RnpCalculatorTest {
     }
 
     @Test
-    public void sqrt() {
-        // Given a number has been pushed
-        rnpCalculator.pushNumber(9);
+    public void doOperation() {
+        // Given a operation has been registered
+        Operation operation = mock(Operation.class);
+        rnpCalculator.registerOperation(OPERATION_NAME, operation);
 
-        // When a sqrt operation is performed
-        rnpCalculator.doOperation("sqrt");
+        // When the operation is performed
+        rnpCalculator.doOperation(OPERATION_NAME);
 
-        // Then the stack contains the sqrt of the number
-        assertThat(rnpCalculator.getStack()).containsExactly(3.0);
-    }
-
-    @Test
-    public void clear() {
-        // Given a number has been pushed
-        rnpCalculator.pushNumber(9);
-
-        // When a clear operation is performed
-        rnpCalculator.doOperation("clear");
-
-        // Then the stack is empty
-        assertThat(rnpCalculator.getStack()).isEmpty();
+        // Then the operation is performed with the calculators stack
+        verify(operation).operate(eq(rnpCalculator.getStack()), any(Stack.class));
     }
 }
