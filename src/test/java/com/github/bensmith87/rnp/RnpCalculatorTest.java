@@ -11,7 +11,7 @@ public class RnpCalculatorTest {
 
     @Before
     public void setup() {
-        rnpCalculator = new RnpCalculator();
+        rnpCalculator = RnpCalculatorFactory.create();
     }
 
     @Test
@@ -21,5 +21,29 @@ public class RnpCalculatorTest {
 
         // Then the stack contains the number
         assertThat(rnpCalculator.getStack()).containsExactly(5.0);
+    }
+
+    @Test
+    public void sqrt() {
+        // Given a number has been pushed
+        rnpCalculator.pushNumber(9);
+
+        // When a sqrt operation is performed
+        rnpCalculator.doOperation("sqrt");
+
+        // Then the stack contains the sqrt of the number
+        assertThat(rnpCalculator.getStack()).containsExactly(3.0);
+    }
+
+    @Test
+    public void clear() {
+        // Given a number has been pushed
+        rnpCalculator.pushNumber(9);
+
+        // When a clear operation is performed
+        rnpCalculator.doOperation("clear");
+
+        // Then the stack is empty
+        assertThat(rnpCalculator.getStack()).isEmpty();
     }
 }

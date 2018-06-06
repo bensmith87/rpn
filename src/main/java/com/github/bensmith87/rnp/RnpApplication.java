@@ -6,12 +6,7 @@ import java.util.Scanner;
 
 public class RnpApplication {
 
-    private final RnpCalculator rnpCalculator = new RnpCalculator();
-
-    public static void main(String[] args) {
-        RnpApplication rnpApplication = new RnpApplication();
-        rnpApplication.run();
-    }
+    private final RnpCalculator rnpCalculator = RnpCalculatorFactory.create();
 
     public void run() {
         Scanner scanner = new Scanner(System.in);
@@ -25,7 +20,11 @@ public class RnpApplication {
         String[] tokens = line.split(" ");
         for (String token : tokens) {
             if (NumberUtils.isCreatable(token)) {
-                parseNumber(token);
+                double number = Double.parseDouble(token);
+                rnpCalculator.pushNumber(number);
+            }
+            else if (rnpCalculator.isOperationName(token)) {
+                rnpCalculator.doOperation(token);
             }
             else {
                 throw new RuntimeException("Don't know what to do with " + token);
@@ -34,8 +33,8 @@ public class RnpApplication {
         rnpCalculator.print();
     }
 
-    private void parseNumber(String token) {
-        double number = Double.parseDouble(token);
-        rnpCalculator.pushNumber(number);
+    public static void main(String[] args) {
+        RnpApplication rnpApplication = new RnpApplication();
+        rnpApplication.run();
     }
 }
