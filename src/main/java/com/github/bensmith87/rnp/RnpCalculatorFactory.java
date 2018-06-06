@@ -2,7 +2,7 @@ package com.github.bensmith87.rnp;
 
 import com.github.bensmith87.rnp.operation.*;
 
-public final class RnpCalculatorFactory {
+final class RnpCalculatorFactory {
 
     private RnpCalculatorFactory() {}
 
@@ -14,6 +14,7 @@ public final class RnpCalculatorFactory {
         rnpCalculator.registerOperation("-", new BinaryOperation((a, b) -> a - b));
         rnpCalculator.registerOperation("*", new BinaryOperation((a, b) -> a * b));
         rnpCalculator.registerOperation("/", new BinaryOperation((a, b) -> a / b));
+        rnpCalculator.registerOperation("+", new BinaryOperation((a, b) -> a + b));
 
         return rnpCalculator;
     }

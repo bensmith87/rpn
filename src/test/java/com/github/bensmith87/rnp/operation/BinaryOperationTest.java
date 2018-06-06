@@ -53,4 +53,16 @@ public class BinaryOperationTest {
         // And numbers poped contains the original numbers
         assertThat(numbersPoped).containsExactly(A, B);
     }
+
+    @Test(expected = IllegalStateException.class)
+    public void insufficientParameters() {
+        // Given the stack has insufficient parameters
+        Stack<Double> stack = new Stack<>();
+        stack.push(A);
+
+        // When the operation is called
+        binaryOperation.operate(stack, numbersPoped);
+
+        // Then an illegal state exception is thrown
+    }
 }

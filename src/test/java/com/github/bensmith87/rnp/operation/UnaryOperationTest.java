@@ -51,4 +51,15 @@ public class UnaryOperationTest {
         // And numbers poped contains the original numbers
         assertThat(numbersPoped).containsExactly(A);
     }
+
+    @Test(expected = IllegalStateException.class)
+    public void insufficientParameters() {
+        // Given the stack has insufficient parameters
+        Stack<Double> stack = new Stack<>();
+
+        // When the operation is called
+        unaryOperation.operate(stack, numbersPoped);
+
+        // Then an illegal state exception is thrown
+    }
 }

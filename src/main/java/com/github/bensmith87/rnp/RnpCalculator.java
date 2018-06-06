@@ -5,6 +5,8 @@ import com.github.bensmith87.rnp.command.DoOperationCommand;
 import com.github.bensmith87.rnp.command.PushNumberCommand;
 import com.github.bensmith87.rnp.operation.Operation;
 
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
@@ -32,13 +34,19 @@ public class RnpCalculator {
         return operations.containsKey(operationName);
     }
 
-    public void doOperation(String operationName) {
+    public void doOperation(String operationName) throws OperationFailedException {
         assert operations.containsKey(operationName) : operationName + " is not a registered operation name";
 
         Operation operation = operations.get(operationName);
         DoOperationCommand command = new DoOperationCommand(operation);
-        command.apply(stack);
         commands.push(command);
+
+        try {
+            command.apply(stack);
+        }
+        catch (IllegalStateException e) {
+            throw new OperationFailedException("operator " + operationName + " (position: " + commands.size() + "): insufficient parameters", e);
+        }
     }
 
     public void undo() {
@@ -47,11 +55,20 @@ public class RnpCalculator {
     }
 
     public void print() {
-        // todo: nicer join
-        System.out.println("stack: " + stack.stream().map(Object::toString).collect(Collectors.joining(" ")));
+        String stackString = stack.stream()
+                .map(this::formatNumber)
+                .collect(Collectors.joining(" "));
+
+        System.out.println("stack: " + stackString);
     }
 
     public Stack<Double> getStack() {
         return stack;
+    }
+
+    private String formatNumber(double number) {
+        DecimalFormat decimalFormat = new DecimalFormat("#.##########");
+        decimalFormat.setRoundingMode(RoundingMode.CEILING);
+        return decimalFormat.format(number);
     }
 }

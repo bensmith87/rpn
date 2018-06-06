@@ -13,6 +13,10 @@ public final class BinaryOperation implements Operation {
 
     @Override
     public final boolean operate(Stack<Double> stack, Stack<Double> numbersPoped) {
+        if (stack.size() < 2) {
+            throw new IllegalStateException("Stack does not contain enough numbers for a binary operation");
+        }
+
         double operand2 = stack.pop();
         double operand1 = stack.pop();
 

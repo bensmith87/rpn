@@ -3,7 +3,7 @@ package com.github.bensmith87.rnp.operation;
 import java.util.Stack;
 import java.util.function.Function;
 
-public final class UnaryOperation implements Operation {
+public class UnaryOperation implements Operation {
 
     private final Function<Double, Double> function;
 
@@ -13,6 +13,10 @@ public final class UnaryOperation implements Operation {
 
     @Override
     public boolean operate(Stack<Double> stack, Stack<Double> numbersPoped) {
+        if (stack.size() < 1) {
+            throw new IllegalStateException("Stack does not contain enough numbers for a unary operation");
+        }
+
         double operand = stack.pop();
         double result = function.apply(operand);
         stack.push(result);
