@@ -3,6 +3,11 @@ package com.github.bensmith87.rnp.operation;
 import java.util.Stack;
 import java.util.function.BiFunction;
 
+/**
+ * Binary Operation.
+ *
+ * A binary operation is an operation that operates on two operands.
+ */
 public final class BinaryOperation implements Operation {
 
     private final BiFunction<Double, Double, Double> function;

@@ -2,6 +2,9 @@ package com.github.bensmith87.rnp;
 
 import com.github.bensmith87.rnp.operation.*;
 
+/**
+ * RNP Calculator Factory.
+ */
 final class RnpCalculatorFactory {
 
     private RnpCalculatorFactory() {}

@@ -2,6 +2,9 @@ package com.github.bensmith87.rnp.operation;
 
 import java.util.Stack;
 
+/**
+ * Clear Operation.
+ */
 public class ClearOperation implements Operation {
 
     @Override

@@ -4,6 +4,16 @@ import com.github.bensmith87.rnp.operation.Operation;
 
 import java.util.Stack;
 
+/**
+ * Do Operation Command.
+ *
+ * Command to do and undo an operation.
+ *
+ * When an operation is undone the result needs to be poped from the stack and the operands that were poped from the
+ * stack need to be pushed back on.
+ *
+ * To achieve this the command needs to remember which operands were poped off the stack.
+ */
 public class DoOperationCommand implements Command {
 
     private final Operation operation;

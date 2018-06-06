@@ -12,6 +12,12 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
+/**
+ * RNP Calculator.
+ *
+ * Maintains the stack of operands and a stack of commands.
+ * Allows numbers to be pushed, operations to be done, and allows these commands to be undone.
+ */
 public class RnpCalculator {
 
     private final Stack<Double> stack = new Stack<>();

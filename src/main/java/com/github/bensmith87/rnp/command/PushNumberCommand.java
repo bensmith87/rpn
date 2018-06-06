@@ -2,6 +2,11 @@ package com.github.bensmith87.rnp.command;
 
 import java.util.Stack;
 
+/**
+ * Push Number Command.
+ *
+ * Command to do and undo pushing a number onto the stack.
+ */
 public class PushNumberCommand implements Command {
 
     private final double number;

@@ -2,6 +2,9 @@ package com.github.bensmith87.rnp.operation;
 
 import java.util.Stack;
 
+/**
+ * Operation Interface.
+ */
 @FunctionalInterface
 public interface Operation {
 

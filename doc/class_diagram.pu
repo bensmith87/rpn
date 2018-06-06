@@ -1,0 +1,25 @@
+@startuml
+class RnpCalculator
+RnpCalculator : Stack stack
+
+RnpApplication ..> RnpCalculatorFactory : create()
+RnpCalculatorFactory -> RnpCalculator : creates
+RnpCalculatorFactory -> Operation: creates
+RnpApplication *- RnpCalculator
+
+interface Command
+Command : apply(Stack stack)
+Command : undo(Stack stack)
+Command <|.down. DoOperationCommand
+Command <|.down. PushNumberCommand
+
+interface Operation
+Operation : operate(Stack stack, Stack numbersPoped)
+Operation <|.down. BinaryOperation
+Operation <|.down. UnaryOperation
+Operation <|.down. ClearOperation
+
+DoOperationCommand o-down- Operation
+RnpCalculator *- "*" Operation
+RnpCalculator *- "*" Command
+@enduml

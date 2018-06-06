@@ -3,6 +3,11 @@ package com.github.bensmith87.rnp.operation;
 import java.util.Stack;
 import java.util.function.Function;
 
+/**
+ * Unary Operation.
+ *
+ * A unary operation is an operation that operates on one operand.
+ */
 public class UnaryOperation implements Operation {
 
     private final Function<Double, Double> function;
