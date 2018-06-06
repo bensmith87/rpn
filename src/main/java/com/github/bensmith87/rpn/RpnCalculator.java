@@ -1,9 +1,9 @@
-package com.github.bensmith87.rnp;
+package com.github.bensmith87.rpn;
 
-import com.github.bensmith87.rnp.command.Command;
-import com.github.bensmith87.rnp.command.DoOperationCommand;
-import com.github.bensmith87.rnp.command.PushNumberCommand;
-import com.github.bensmith87.rnp.operation.Operation;
+import com.github.bensmith87.rpn.command.Command;
+import com.github.bensmith87.rpn.command.DoOperationCommand;
+import com.github.bensmith87.rpn.command.PushNumberCommand;
+import com.github.bensmith87.rpn.operation.Operation;
 
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
@@ -13,12 +13,12 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 
 /**
- * RNP Calculator.
+ * RPN Calculator.
  *
  * Maintains the stack of operands and a stack of commands.
  * Allows numbers to be pushed, operations to be done, and allows these commands to be undone.
  */
-public class RnpCalculator {
+public class RpnCalculator {
 
     private final Stack<Double> stack = new Stack<>();
 

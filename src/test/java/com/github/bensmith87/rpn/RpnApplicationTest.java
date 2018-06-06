@@ -1,4 +1,4 @@
-package com.github.bensmith87.rnp;
+package com.github.bensmith87.rpn;
 
 import org.junit.After;
 import org.junit.Before;
@@ -9,16 +9,16 @@ import java.io.PrintStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RnpApplicationTest {
+public class RpnApplicationTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
 
-    private RnpApplication rnpApplication;
+    private RpnApplication rpnApplication;
 
     @Before
     public void setup() {
         System.setOut(new PrintStream(outContent));
-        rnpApplication = new RnpApplication();
+        rpnApplication = new RpnApplication();
     }
 
     @After
@@ -99,7 +99,7 @@ public class RnpApplicationTest {
     }
 
     private void input(String line) {
-        rnpApplication.evaluateLine(line);
+        rpnApplication.evaluateLine(line);
     }
 
     private String[] output() {

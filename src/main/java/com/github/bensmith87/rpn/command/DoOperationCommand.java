@@ -1,6 +1,6 @@
-package com.github.bensmith87.rnp.command;
+package com.github.bensmith87.rpn.command;
 
-import com.github.bensmith87.rnp.operation.Operation;
+import com.github.bensmith87.rpn.operation.Operation;
 
 import java.util.Stack;
 

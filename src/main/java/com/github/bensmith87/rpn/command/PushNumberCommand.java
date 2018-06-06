@@ -1,4 +1,4 @@
-package com.github.bensmith87.rnp.command;
+package com.github.bensmith87.rpn.command;
 
 import java.util.Stack;
 

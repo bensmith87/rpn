@@ -1,22 +1,21 @@
-package com.github.bensmith87.rnp;
+package com.github.bensmith87.rpn;
 
-import javax.swing.text.html.StyleSheet;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
 /**
- * RNP Application.
+ * RPN Application.
  *
  * The main entry point of the application.
  * Parses user input and calls the calculator.
  */
-class RnpApplication {
+class RpnApplication {
 
-    private final RnpCalculator rnpCalculator = RnpCalculatorFactory.create();
+    private final RpnCalculator rpnCalculator = RpnCalculatorFactory.create();
 
     private void run() {
-        System.out.println("RNP Calculator");
+        System.out.println("RPN Calculator");
         System.out.println("Input a whitespace separated string of numbers and operators");
         System.out.println("Valid operators are: + - / * undo clear");
         Scanner scanner = new Scanner(System.in);
@@ -36,7 +35,7 @@ class RnpApplication {
             System.out.println(e.getMessage());
         }
         finally {
-            rnpCalculator.print();
+            rpnCalculator.print();
         }
     }
 
@@ -53,13 +52,13 @@ class RnpApplication {
     private void processToken(String token) throws OperationFailedException {
         if (isNumber(token)) {
             double number = Double.parseDouble(token);
-            rnpCalculator.pushNumber(number);
+            rpnCalculator.pushNumber(number);
         }
-        else if (rnpCalculator.isOperationName(token)) {
-            rnpCalculator.doOperation(token);
+        else if (rpnCalculator.isOperationName(token)) {
+            rpnCalculator.doOperation(token);
         }
         else if ("undo".equals(token)) {
-            rnpCalculator.undo();
+            rpnCalculator.undo();
         }
         else {
             throw new IllegalArgumentException(token + " is an unknown token");
@@ -67,8 +66,8 @@ class RnpApplication {
     }
 
     public static void main(String[] args) {
-        RnpApplication rnpApplication = new RnpApplication();
-        rnpApplication.run();
+        RpnApplication rpnApplication = new RpnApplication();
+        rpnApplication.run();
     }
 
     private boolean isNumber(String token) {

@@ -1,11 +1,11 @@
 @startuml
-class RnpCalculator
-RnpCalculator : Stack stack
+class RpnCalculator
+RpnCalculator : Stack stack
 
-RnpApplication ..> RnpCalculatorFactory : create()
-RnpCalculatorFactory -> RnpCalculator : creates
-RnpCalculatorFactory -> Operation: creates
-RnpApplication *- RnpCalculator
+RpnApplication ..> RpnCalculatorFactory : create()
+RpnCalculatorFactory -> RpnCalculator : creates
+RpnCalculatorFactory -> Operation: creates
+RpnApplication *- RpnCalculator
 
 interface Command
 Command : apply(Stack stack)
@@ -20,6 +20,6 @@ Operation <|.down. UnaryOperation
 Operation <|.down. ClearOperation
 
 DoOperationCommand o-down- Operation
-RnpCalculator *- "*" Operation
-RnpCalculator *- "*" Command
+RpnCalculator *- "*" Operation
+RpnCalculator *- "*" Command
 @enduml

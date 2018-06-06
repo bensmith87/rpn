@@ -1,4 +1,4 @@
-package com.github.bensmith87.rnp;
+package com.github.bensmith87.rpn;
 
 class OperationFailedException extends Exception {
 

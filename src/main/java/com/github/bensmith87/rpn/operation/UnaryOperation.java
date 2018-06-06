@@ -1,4 +1,4 @@
-package com.github.bensmith87.rnp.operation;
+package com.github.bensmith87.rpn.operation;
 
 import java.util.Stack;
 import java.util.function.Function;
