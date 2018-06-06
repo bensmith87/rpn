@@ -26,6 +26,9 @@ public class RnpApplication {
             else if (rnpCalculator.isOperationName(token)) {
                 rnpCalculator.doOperation(token);
             }
+            else if ("undo".equals(token)) {
+                rnpCalculator.undo();
+            }
             else {
                 throw new RuntimeException("Don't know what to do with " + token);
             }
